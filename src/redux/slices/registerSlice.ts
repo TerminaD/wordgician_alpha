@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import type { RootState } from '../store'
 
 // Define a type for the slice state
-interface RegisterState {
+export interface RegisterState {
   isRegistered: boolean
   referencer: string
 }
@@ -34,7 +34,8 @@ export const { changeRegisterStatus, switchRegisterStatus, setReferencer } =
   registerSlice.actions
 
 // Export functions for useSelector hook
-export const getRegisterStatus = (state: RootState) => state.register.isRegistered
+export const getRegisterStatus = (state: RootState) =>
+  state.register.isRegistered
 export const getReferencer = (state: RootState) => state.register.referencer
 
 export default registerSlice.reducer
