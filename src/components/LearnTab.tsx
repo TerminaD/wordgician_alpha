@@ -1,16 +1,20 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Switch, Text, View } from 'react-native';
 
 import styles from '../globalStyles';
-import { useTypedSelector } from '../redux/hooks';
-import { getRegisterStatus } from '../redux/slices/registerSlice';
+import { useTypedDispatch, useTypedSelector } from '../redux/hooks';
+import { getRegisterStatus, switchRegisterStatus } from '../redux/slices/registerSlice';
 
 const LearnTab = () => {
   const registerStatus: boolean = useTypedSelector(getRegisterStatus)
+  const dispatch = useTypedDispatch()
 
   return (
     <View style={styles.container}>
-      <Text>{registerStatus}</Text>
+      <Switch onValueChange={() => dispatch(switchRegisterStatus())} />
+      <Text>
+        {registerStatus ? 'You are registered!' : 'Not yet registered.'}
+      </Text>
     </View>
   )
 }
